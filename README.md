@@ -1,10 +1,9 @@
-
 # Quizora – AI-Assisted Online Quiz Platform
 
 Quizora is a **full-stack, AI-augmented academic quiz platform** designed for modern classrooms and online evaluations.
 It enables **faculty to create, control, and publish quizzes efficiently**, while allowing **students to securely access and attempt quizzes using a unique quiz code**.
 
-The platform integrates **Large Language Models (LLMs)** with **Retrieval-Augmented Generation (RAG)** to generate **syllabus-aligned, academically grounded questions**, while preserving **full faculty control** over final quiz content.
+The platform integrates **Large Language Models (LLMs)** via **Spring AI** to generate **syllabus-aligned, academically grounded questions**, while preserving **full faculty control** over final quiz content.
 
 ---
 
@@ -12,67 +11,66 @@ The platform integrates **Large Language Models (LLMs)** with **Retrieval-Augmen
 
 Quizora addresses limitations in traditional quiz systems such as manual question creation, unsecured access, and lack of scalability.
 Faculty can either:
-- Automatically generate questions from a topic using AI (grounded via RAG)
-- Manually create and edit questions with complete academic control
+- Automatically generate questions from a topic using AI (grounded via RAG/Context).
+- Manually create and edit questions with complete academic control.
 
 Once a quiz is published, a **unique quiz code** is generated. Students enter this code to access the quiz directly.
 
 The system follows a strict **role-based architecture**:
-- **Faculty:** Quiz creation, AI generation, publishing, analytics
-- **Students:** Quiz access, attempts, results
+- **Faculty:** Quiz creation, AI generation, publishing, analytics.
+- **Students:** Quiz access, attempts, results.
 
 ---
 
 ## 2. Key Features
 
-- Role-based access control (Faculty / Student)
-- AI-assisted question generation using LLMs
-- RAG-based syllabus-grounded question creation
-- Manual question creation and editing
-- Faculty review before publishing AI-generated questions
-- Quiz access via unique faculty-generated codes
-- Timed quizzes with automated evaluation
-- Student score tracking and analytics dashboard
-- RESTful and scalable backend architecture
+- **Role-based Access Control:** Secure Faculty and Student logins.
+- **AI-Assisted Question Generation:** Upload a PDF (Syllabus/Notes) and generate questions automatically using Groq/OpenAI models.
+- **Manual Question Management:** Full CRUD capabilities for quiz questions.
+- **Unique Quiz Codes:** Secure, code-based access for students (no complex enrollment needed).
+- **Auto-Evaluation:** Instant scoring and result generation.
+- **Analytics Dashboard:** Faculty can view performance metrics and student attempts.
+- **Secure Architecture:** JWT-based authentication and BCrypt password hashing.
 
 ---
 
 ## 3. Technology Stack
 
 ### Backend
-- Java 17
-- Spring Boot
-- Maven
-- PostgreSQL
-- Spring Data JPA
-- JWT-based Authentication
+- **Language:** Java 21
+- **Framework:** Spring Boot 3.4.1
+- **AI Integration:** Spring AI (Groq / OpenAI compatible)
+- **Database:** MySQL
+- **ORM:** Spring Data JPA
+- **Authentication:** JWT (JSON Web Tokens) & Spring Security
+- **Build Tool:** Maven
 
 ### Frontend
-- React
-- Axios
-- React Router DOM
-- Context API
+- **Framework:** React.js (Vite)
+- **Styling:** CSS3 / Lucide React Icons
+- **HTTP Client:** Axios
+- **Routing:** React Router DOM
 
 ---
 
 ## 4. Getting Started
 
 ### Prerequisites
-- Java 17+
+- Java 21 SDK
 - Maven
-- PostgreSQL
+- MySQL Server
 - Node.js (npm)
 
 ---
 
 ## 5. Backend Setup
 
-```bash
-cd backend
-mvn clean install
-mvn spring-boot:run
-```
-
+1. **Configure Database:**
+   Update `backend/src/main/resources/application.properties` with your MySQL credentials:
+   ```properties
+   spring.datasource.url=jdbc:mysql://localhost:3306/quizora_db
+   spring.datasource.username=root
+   spring.datasource.password=YOUR_PASSWORD
 Backend runs on:
 ```
 http://localhost:8081
